@@ -1,1 +1,1 @@
-add_executable("MilkingCows" "Solution.cpp")
+add_executable("MilkingCows" "Solution.cpp" "milk2.in" "milk2.out")

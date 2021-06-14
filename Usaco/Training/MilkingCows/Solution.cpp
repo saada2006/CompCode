@@ -4,20 +4,22 @@ LANG: C++
 TASK: milk2
 */
 
+// I should probably add IDE folders and add *.(in|out) file support in CMakeLists.txt
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <utility>
 #include <algorithm>
 
-std::ifstream Input;
-std::ofstream Output;
+using Timing = std::pair<uint32_t, uint32_t>;
 
 int main() {
+	std::ifstream Input;
+	std::ofstream Output;
+
 	Input .open("milk2.in" );
 	Output.open("milk2.out");
-
-	using Timing = std::pair<uint32_t, uint32_t>;
 
 	std::vector<Timing> Schedule;
 
@@ -28,6 +30,7 @@ int main() {
 	for (Timing& Time : Schedule) {
 		Input >> Time.first >> Time.second;
 	}
+	Input.close();
 	
 	std::sort(Schedule.begin(), Schedule.end(), [](const Timing& T0, const Timing& T1) -> bool {return T0.first < T1.first; });
 
@@ -70,6 +73,7 @@ int main() {
 	}
 
 	Output << MaxTimeMilked << ' ' << MaxTimeUnmilked << std::endl;
+	Output.close();
 
 	return 0;
 }
