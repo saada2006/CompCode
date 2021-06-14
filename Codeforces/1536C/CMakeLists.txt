@@ -1,0 +1,1 @@
+add_executable("1536C" "Solution.cpp")
